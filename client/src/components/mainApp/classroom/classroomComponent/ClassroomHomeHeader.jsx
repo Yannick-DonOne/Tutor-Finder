@@ -1,5 +1,5 @@
-import React, { useRef, useContext, useEffect, useState } from 'react';
-import AuthContext from '../../../../context/auth/AuthContext';
+import React, { useRef, useContext, useEffect, useState } from "react";
+import AuthContext from "../../../../context/auth/AuthContext";
 
 export default function ClassroomHomeHeader({
   toggleModal,
@@ -22,9 +22,9 @@ export default function ClassroomHomeHeader({
         <span
           style={{
             display:
-              showCreateClassroom === 'learner'
-                ? 'none'
-                : showCreateClassroom === 'tutor' && 'block',
+              showCreateClassroom === "learner"
+                ? "none"
+                : showCreateClassroom === "tutor" && "block",
           }}
           className="createClass text-danger text-decoration-underline"
         >
@@ -42,12 +42,15 @@ export default function ClassroomHomeHeader({
             value={inputData}
             type="text"
             placeholder="Search tutor/course"
-            style={{ backgroundColor: 'transparent' }}
+            style={{ backgroundColor: "transparent" }}
             className="w-100 border-0 pr-3"
             onChange={(e) => search(e)}
           />
         </form>
-        <i class="fas view fa-search align-self-center"></i>
+        <i
+          class="fas view fa-search align-self-center"
+          style={{ zIndex: 0 }}
+        ></i>
       </div>
     </div>
   );
