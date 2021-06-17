@@ -13,11 +13,13 @@ export default function Hero() {
           <p className="font-weight-bold h4">Get in touch</p>
           <TrustAndExperience />
 
-          <p className="mb-4 h4">
+          <p className="mb-4 h3">
             Tailored to your career goals and busy schedule
           </p>
           <Link to="/register">
-            <button className="btn px-4 py-3 EnrolButton ">Enrol now</button>
+            <button className="btn mt-4 px-4 py-3 EnrolButton ">
+              Enrol now
+            </button>
           </Link>
         </div>
         <Particles

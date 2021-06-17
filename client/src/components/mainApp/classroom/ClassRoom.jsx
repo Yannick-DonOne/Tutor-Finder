@@ -53,7 +53,6 @@ function ClassRoom() {
     }
   }, [myClasses]);
 
-  
   useEffect(async () => {
     loadUser();
   }, []);
@@ -103,7 +102,6 @@ function ClassRoom() {
   useEffect(async () => {
     try {
       await myCreatedClass();
-
       if (alreadySet === 0) {
         if (
           Object(allMyClasses).hasOwnProperty('classroom') &&
@@ -111,7 +109,7 @@ function ClassRoom() {
         ) {
           new Promise(async (resolve, reject) => {
             await setalreadySet(1);
-            let temp = [...allMyClasses.classroom, ...learnerClass];
+            let temp = [...allMyClasses.classroom];
             temp.map(
               (singleClass) =>
                 (singleClass.bg = classPics[Math.floor(Math.random() * 7)])
@@ -126,6 +124,7 @@ function ClassRoom() {
     } catch (err) {
       console.log(err);
     }
+<<<<<<< HEAD
   }, [allMyClasses, learnerClass]);
 
   const classroomModaltoggle = () => {
@@ -141,6 +140,9 @@ function ClassRoom() {
     classroomModaltoggle();
   };
   
+=======
+  }, [allMyClasses]);
+>>>>>>> a4feafae38ca4e365ac0d233c425600f19529904
   return (
     <div className="" style={{ width: '100%' }}>
        <MyModal
@@ -153,12 +155,17 @@ function ClassRoom() {
       <div className="back">
         <div className="classes">
           <div className="tutor">
-          <h4> <span className='tutorName' >tutoring</span>/tutored</h4>
+            <h4>
+              {' '}
+              <span className="tutorName">tutoring</span>/tutored
+            </h4>
           </div>
           <div className="w-100 d-flex mt-5" style={{ flexWrap: 'wrap' }}>
-            {myClasses.map((e, index) => (
-              <Room e={e} key={index} />
-            ))}
+            {Object(user).hasOwnProperty('status') && user.status === 'tutor'
+              ? myClasses.map((e, index) => <Room e={e} key={index} />)
+              : Object(user).hasOwnProperty('status') &&
+                user.status === 'learner' &&
+                aLearnersClass.map((e, index) => <Room e={e} key={index} />)}
           </div>
         </div>
         <div className="contener">
@@ -170,6 +177,7 @@ function ClassRoom() {
               </div>
               <div className="task">
                 <p className="thread">New Thread</p>
+<<<<<<< HEAD
                 <div className="dropdown">
                 <BsListTask className='dropbtn' size={20} style={{cursor:'pointer'}}/>
                 <div className="dropdown-content">
@@ -177,6 +185,9 @@ function ClassRoom() {
                       </div>
                 </div>
                
+=======
+                <BsListTask size={20} style={{ cursor: 'pointer' }} />
+>>>>>>> a4feafae38ca4e365ac0d233c425600f19529904
               </div>
             </div>
             <div className="chats">
