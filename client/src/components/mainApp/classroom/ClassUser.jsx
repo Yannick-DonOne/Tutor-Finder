@@ -1,7 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
-import images from "../../assets/classroom/images.jpg";
-import AuthContext from "../../../context/auth/AuthContext";
-import "./user.css";
+import React, { useContext, useEffect, useState } from 'react';
+import images from '../../assets/classroom/images.jpg';
+import AuthContext from '../../../context/auth/AuthContext';
+import './user.css';
+const PF = 'http://localhost:5000/images/';
 
 function ClassUser({ parti }) {
   const authContext = useContext(AuthContext);
@@ -18,8 +19,18 @@ function ClassUser({ parti }) {
   return (
     <div className="pack ">
       <div className="d-flex align-items-center w-100">
-        <div style={{ width: "50px", height: "50px" }}>
-          <img src={images} width="50px" height="50px" className="pix" alt="" />
+        <div style={{ width: '50px', height: '50px' }}>
+          <img
+            src={
+              parti.profilePic === ''
+                ? 'http://www.iconarchive.com/download/i102645/graphicloads/flat-finance/person.ico'
+                : PF + parti.profilePic
+            }
+            width="50px"
+            height="50px"
+            className="pix"
+            alt=""
+          />
         </div>
         <div className="ml-3 mr-auto">{parti.username}</div>
         <button
