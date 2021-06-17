@@ -32,11 +32,11 @@ function ClassChat() {
     setStoreChat(getClassMessages.message);
   }, [getClassMessages.message]);
   return (
-    <div>
+    <div className='px-4 border-md border-right-' >
       {typeof storeChat === 'object' &&
         storeChat.map((chatData) => (
           <div className=" p-3  m-3">
-            <div
+            <div className='msgX w-100 px-4 border-md border-right- '
               style={{
                 backgroundColor:
                   chatData.sender[0]._id === user && user._id ? 'teal' : 'pink',
@@ -46,9 +46,10 @@ function ClassChat() {
                     : null,
               }}
             >
-              <div>
-                <div className="d-flex">
-                  <img
+              <div className='hit'>
+                <div className="circlemode">
+               <div className="imgavatar">
+               <img
                     src={
                       PF + chatData.sender[0].profilePic === ''
                         ? 'http://www.iconarchive.com/download/i102645/graphicloads/flat-finance/person.ico'
@@ -57,14 +58,20 @@ function ClassChat() {
                     alt=""
                     height="50px"
                     width="50px"
+                    borderRadius='50%'
                   />
-                  <h2 className="text-white">
+               </div>
+                <div className="msghead">
+                <h2 className="text-white">
                     {' '}
                     {chatData.sender[0].username}{' '}
                   </h2>
+                  </div> 
                 </div>
-                <h2> {chatData.text} </h2>
-                <span className="text-secondary">
+               <div className="msgbody">
+               <h2> {chatData.text} </h2>
+               </div> 
+                <span className="text-secondary mb-4">
                   {format(chatData.createdAt)}{' '}
                 </span>
               </div>

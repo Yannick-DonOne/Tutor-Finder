@@ -56,21 +56,21 @@ function RegLog(props) {
       tel,
     });
   };
-  const [disabled, setDisabled] = useState(false);
-  const inputRef1 = useRef(null);
-  const tagRef = useRef(null);
-  const toggleEnable = (x) => {
-    if (x == 0) {
-      setDisabled(true);
-
-      inputRef1.current.style.display = 'none';
-      tagRef.current.style.display = 'none';
-    } else {
-      setDisabled(false);
-      inputRef1.current.style.display = 'block';
-      tagRef.current.style.display = 'block';
-    }
-  };
+const [disabled, setDisabled] =useState(false);
+const inputRef1 = useRef(null)
+const tagRef = useRef(null)
+const toggleEnable = (x) => {
+  if (x == 0){
+    setDisabled(true)
+    
+    inputRef1.current.style.display = 'none'
+  }
+  else{
+    setDisabled(false)
+    inputRef1.current.style.display = 'block'
+    
+  } 
+}
 
   useEffect(() => {}, []);
   return (

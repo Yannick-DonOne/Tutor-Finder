@@ -261,11 +261,48 @@
   align-items: center;
   text-align: center;
 }
+.imgavatar{
+  height:50px;
+  width:50px;
+  border-radius: 50%;
+}
 .message-text {
   font-size: 15px;
 
   word-break: break-word;
   color: #333;
+}
+.msgX{
+  width:20vw;
+  height:12vh; 
+  border-radius: 0px 15px 15px 15px;
+  padding: 6px 7px 8px 9px;
+  }
+.msghead{
+  width: 100%;
+  height: 50px;
+}
+.msgbody{
+  width: 100%;
+  height: 50%;
+  /* margin-bottom: 2em !important; */
+}
+.msgbody h2{
+  
+  font-size: 16px;
+}
+.hit{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.circlemode{
+  width: 100%;
+  height: 50%;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: row;
 }
 .chatFooter1 {
   width: 100%;
