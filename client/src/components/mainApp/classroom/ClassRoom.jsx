@@ -124,7 +124,6 @@ function ClassRoom() {
     } catch (err) {
       console.log(err);
     }
-<<<<<<< HEAD
   }, [allMyClasses, learnerClass]);
 
   const classroomModaltoggle = () => {
@@ -139,10 +138,7 @@ function ClassRoom() {
     console.log("class created");
     classroomModaltoggle();
   };
-  
-=======
-  }, [allMyClasses]);
->>>>>>> a4feafae38ca4e365ac0d233c425600f19529904
+
   return (
     <div className="" style={{ width: '100%' }}>
        <MyModal
@@ -176,8 +172,7 @@ function ClassRoom() {
                 <p className="teacher">Tutor: Mr Colins More</p>
               </div>
               <div className="task">
-                <p className="thread">New Thread</p>
-<<<<<<< HEAD
+                {/* <p className="thread">New Thread</p> */}
                 <div className="dropdown">
                 <BsListTask className='dropbtn' size={20} style={{cursor:'pointer'}}/>
                 <div className="dropdown-content">
@@ -185,9 +180,6 @@ function ClassRoom() {
                       </div>
                 </div>
                
-=======
-                <BsListTask size={20} style={{ cursor: 'pointer' }} />
->>>>>>> a4feafae38ca4e365ac0d233c425600f19529904
               </div>
             </div>
             <div className="chats">

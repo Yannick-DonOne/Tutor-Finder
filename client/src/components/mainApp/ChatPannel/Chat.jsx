@@ -191,30 +191,6 @@ function Chat() {
                 >
                   <Chatlist conv={conv} currentUser={user} />
                 </div>
-<<<<<<< HEAD
-                    </div>
-                    <div className="chatBody">
-                        <div className="messages">
-                        {typeof currentChat === "undefined" ? (
-            <h1>Open a conversation to start a chat</h1>
-          ) : (
-            <div>
-              {typeof tryIt === "object" &&
-                tryIt.map((m) => (
-                  <div>
-                    <div
-                      className={
-                        m.sender === user._id ? "alice" : "yaya"
-                      }
-                    >
-                      <div className=" m-5 ">
-                      
-                        <MsgRcd
-                          style={{ maxWidth: "600px", borderRadius: "21px" }}
-                          m={m}
-                       />
-                        <p className="h5 pt-3"> {format(m.createdAt)} </p>
-=======
               ))}
           </div>
         </div>
@@ -279,7 +255,6 @@ function Chat() {
                             <p className="h5 pt-3"> {format(m.createdAt)} </p>
                           </div>
                         </div>
->>>>>>> a4feafae38ca4e365ac0d233c425600f19529904
                       </div>
                     ))}
                 </div>
