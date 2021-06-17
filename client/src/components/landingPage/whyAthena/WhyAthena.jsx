@@ -6,7 +6,7 @@ import WhyAthenaSvg from "./WhyAthenaSvg";
 
 export default function WhyAthena() {
   return (
-    <div className="vw-100 mt-5">
+    <div id="whyAthena" className="vw-100 mt-5">
       <WhyAthenaSvg />
       <div className="p-5 athena bg-light">
         <div className="textSide p-4 text-center">

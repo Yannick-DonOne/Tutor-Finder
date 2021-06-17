@@ -1,14 +1,14 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Modal, Button } from 'react-bootstrap';
-import Users from './Users';
-import ClassContext from '../../../context/classroom/ClassContext';
-import AuthContext from '../../../context/auth/AuthContext';
-import ClassUser from './ClassUser';
+import React, { useState, useContext, useEffect } from "react";
+import { Modal, Button } from "react-bootstrap";
+import Users from "./Users";
+import ClassContext from "../../../context/classroom/ClassContext";
+import AuthContext from "../../../context/auth/AuthContext";
+import ClassUser from "./ClassUser";
 
 function ClassParticipant(props) {
   const participantData = props.myData;
   useEffect(async () => {
-    console.log('received ' + props.myData);
+    console.log("received " + props.myData);
   }, []);
 
   return (
@@ -26,7 +26,7 @@ function ClassParticipant(props) {
         </Modal.Header>
         <Modal.Body>
           <h4>Users</h4>
-          {typeof props.participantData === 'object' &&
+          {typeof props.participantData === "object" &&
             props.participantData.map((user) => <ClassUser user={user} />)}
         </Modal.Body>
         {/* Logout */}

@@ -36,3 +36,7 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+/* svg:not(:root).svg-inline--fa {
+  z-index: 1 !important;
+} */

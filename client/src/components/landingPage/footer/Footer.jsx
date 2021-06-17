@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 export default function Footer() {
   return (
-    <div className="footer">
+    <div id="contacts" className="footer">
       <div
         className="d-flex"
-        style={{ backgroundColor: '#2f2e41', padding: '2rem' }}
+        style={{ backgroundColor: "#2f2e41", padding: "2rem" }}
       >
         <ul className="footerList list-style-none text-white">
           <li>Yaya</li>

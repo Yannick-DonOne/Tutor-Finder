@@ -5,7 +5,10 @@ import Card2 from "../../assets/Cards/card1.jpg";
 
 export default function ExploreTutors() {
   return (
-    <div className="container-fluid row d-flex flex-column p-3">
+    <div
+      id="exploreTutors"
+      className="container-fluid row d-flex flex-column p-3"
+    >
       <div className="titleText col-sm-8 col-lg-5 col text-center mt-5 align-self-center">
         <h2 className="mb-3">Explore our Tutors</h2>
         <p>

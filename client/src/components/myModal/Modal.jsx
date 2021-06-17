@@ -15,7 +15,7 @@ function MyModal({ modalStatus, component, toggleModal, modalHeader }) {
           </div>
         </div>
 
-        {component}
+        <div style={{ height: "90%" }}>{component}</div>
       </div>
     </div>
   );

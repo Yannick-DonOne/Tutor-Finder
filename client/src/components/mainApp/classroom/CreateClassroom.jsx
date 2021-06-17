@@ -49,7 +49,7 @@ function CreateClassroom() {
         modalHeader={"Add Participants"}
         toggleModal={classroomModaltoggle}
         modalStatus={classModalstate}
-        component={<Participant />}
+        component={<Participant toggleModal={classroomModaltoggle} />}
         header_bg={""}
       />
       <Form onSubmit={(e) => handleSubmit(e)}>
@@ -66,9 +66,8 @@ function CreateClassroom() {
             onChange={(e) => handleChange(e)}
           />
           <Form.Control.Feedback type="invalid">
-              Please Enter Course Name
-            </Form.Control.Feedback>
-         
+            Please Enter Course Name
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">

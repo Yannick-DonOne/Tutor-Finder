@@ -1,12 +1,15 @@
 .pack {
   height: fit-content;
   width: 90%;
-  border-bottom: 2px solid rgba(144, 144, 144, 0.4);
+  border-bottom: 1px solid rgba(144, 144, 144, 0.4);
   display: flex;
-  flex-direction: row;
-  margin: 1em !important;
-  margin-bottom: 2em!important;
-  padding: 0.7em !important;
+  margin: 0.4rem 1rem !important;
+  margin-bottom: 2rem !important;
+  padding: 0.9em !important;
+  overflow-y: auto;
+}
+.btn_add {
+  margin-left: auto !important;
 }
 .informing {
   height: 50px;
