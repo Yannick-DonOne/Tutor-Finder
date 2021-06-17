@@ -9,7 +9,6 @@ import Room from "./Room";
 
 import imgtry from "../../assets/img/1.jpg";
 
-<<<<<<< HEAD
 import img1 from '../../assets/classImages/img1.png';
 import img2 from '../../assets/classImages/img2.png';
 import img3 from '../../assets/classImages/img3.png';
@@ -18,15 +17,6 @@ import img5 from '../../assets/classImages/img5.png';
 import img6 from '../../assets/classImages/img6.png';
 import MyModal from "../../myModal/Modal";
 import EditClass from "./EditClass";
-=======
-import img1 from "../../assets/classImages/img1.png";
-import img2 from "../../assets/classImages/img2.png";
-import img3 from "../../assets/classImages/img3.png";
-import img4 from "../../assets/classImages/img4.png";
-import img5 from "../../assets/classImages/img5.png";
-import img6 from "../../assets/classImages/img6.png";
-
->>>>>>> 8704586a84264af755e69b8219d2d353b3d0625b
 function ClassRoom() {
   const authContext = useContext(AuthContext);
   const {
@@ -150,7 +140,6 @@ function ClassRoom() {
   };
 
   return (
-<<<<<<< HEAD
     <div className="" style={{ width: '100%' }}>
        <MyModal
         modalHeader={"Edit Class"}
@@ -159,9 +148,6 @@ function ClassRoom() {
         component={<EditClass/>}
         header_bg={""}
       />
-=======
-    <div className="" style={{ width: "100%" }}>
->>>>>>> 8704586a84264af755e69b8219d2d353b3d0625b
       <div className="back">
         <div className="classes">
           <div className="tutor">
@@ -187,7 +173,6 @@ function ClassRoom() {
                 <p className="teacher">Tutor: Mr Colins More</p>
               </div>
               <div className="task">
-<<<<<<< HEAD
                 {/* <p className="thread">New Thread</p> */}
                 <div className="dropdown">
                 <BsListTask className='dropbtn' size={20} style={{cursor:'pointer'}}/>
@@ -196,10 +181,6 @@ function ClassRoom() {
                       </div>
                 </div>
                
-=======
-                <p className="thread">New Thread</p>
-                <BsListTask size={20} style={{ cursor: "pointer" }} />
->>>>>>> 8704586a84264af755e69b8219d2d353b3d0625b
               </div>
             </div>
             <div className="chats">
