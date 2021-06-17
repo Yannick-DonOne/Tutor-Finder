@@ -64,12 +64,11 @@ const toggleEnable = (x) => {
     setDisabled(true)
     
     inputRef1.current.style.display = 'none'
-    tagRef.current.style.display = 'none'
   }
   else{
     setDisabled(false)
     inputRef1.current.style.display = 'block'
-    tagRef.current.style.display = 'block'
+    
   } 
 }
 
@@ -150,10 +149,10 @@ const toggleEnable = (x) => {
           <div class="input-group col-lg-6 mb-4">
             <div class="input-group-prepend">
               <span class="input-group-text bg-white px-4 border-md border-right-0">
-              <i class="fab fa-black-tie" ref={tagRef}></i>
+              <i class="fab fa-black-tie" ></i>
               </span>
             </div>
-            <input id="speciality" ref={inputRef1} type="text" name="speciality" value={speciality}   onChange={onChange} disabled={disabled} placeholder="Speciality" onChange={(e)=>toggleEnable(e)} class="form-control bg-white border-left-0 border-md"/>
+            <input  ref={inputRef1} type="text" name="speciality" value={speciality}   onChange={onChange} disabled={disabled} placeholder="Speciality: Math, Physics..." class="form-control bg-white border-left-0 border-md"/>
           </div>
       <div className="disposal">
       <div class="input-group col-lg-4 mb-4 ">

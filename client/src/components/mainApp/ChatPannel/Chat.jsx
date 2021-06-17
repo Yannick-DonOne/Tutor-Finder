@@ -225,20 +225,19 @@ function Chat() {
                   {typeof tryIt === 'object' &&
                     tryIt.map((m) => (
                       <div
-                        style={{
-                          backgroundColor:
-                            m.sender !== user._id ? 'red' : 'blue',
-                        }}
+                        // style={{
+                        //   backgroundColor:
+                        //     m.sender !== user._id ? 'red' : 'blue',
+                        // }}
                         className={
                           m.sender === user._id ? 'message mine' : 'message'
                         }
                       >
                         <div className=" m-5 ">
                           <MsgRcd
-                            //   className=" p-3 mt-4 txt text.white "
                             m={m}
                           />
-                          <p className="h5 pt-3"> {format(m.createdAt)} </p>
+                          <p className="h5 pl-5 pt-3 ">{format(m.createdAt)} </p>
                         </div>
                       </div>
                     ))}
