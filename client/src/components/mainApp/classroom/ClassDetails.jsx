@@ -19,9 +19,14 @@ export default function ClassDetails({ data }) {
       </p>
       <p>
         Couse title:{" "}
-        <span className="font-weight-bold">{aClass.className}</span>
+        <span className=" font-weight-bold">{aClass.className}</span>
       </p>
-      {/* <p className="h2"></p> */}
+      <p
+        className="h3 my-5 font-weight-bold text-decoration-underline
+"
+      >
+        Class participants
+      </p>
       {Object(aClass).hasOwnProperty("participants") &&
       aClass.participants.length > 0 ? (
         aClass.participants.map((person) => {

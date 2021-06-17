@@ -51,8 +51,16 @@ function ViewTutors(props) {
   };
   useEffect(async () => {
     try {
-      await setData(allTutor.user);
-      await setdataTemp(allTutor.user);
+      let filterUser =
+        (await Object(allTutor).hasOwnProperty("user")) &&
+        allTutor.user.filter((e) => e._id !== user._id);
+
+      await setData(
+        allTutor.user.length > filterUser.length ? filterUser : allTutor.user
+      );
+      await setdataTemp(
+        allTutor.user.length > filterUser.length ? filterUser : allTutor.user
+      );
     } catch (err) {
       console.error(err);
     }
