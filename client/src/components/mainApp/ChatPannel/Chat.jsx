@@ -198,25 +198,12 @@ function Chat() {
                   <div>
                     <div
                       className={
-                        m.sender === user._id ? "message mine" : "message"
+                        m.sender === user._id ? "alice" : "yaya"
                       }
                     >
                       <div className=" m-5 ">
-                        {/* <img
-                          src={
-                            m.sender === user._id
-                              ? user.profilePic === ""
-                                ? "http://www.iconarchive.com/download/i102645/graphicloads/flat-finance/person.ico"
-                                : PF + user.profilePic
-                              : "message"
-                          }
-                          width="60px"
-                          height="60px"
-                          alt=""
-                          className="rounded-circle"
-                        /> */}
+                      
                         <MsgRcd
-                        //   className=" p-3 mt-4 txt text.white "
                           style={{ maxWidth: "600px", borderRadius: "21px" }}
                           m={m}
                        />

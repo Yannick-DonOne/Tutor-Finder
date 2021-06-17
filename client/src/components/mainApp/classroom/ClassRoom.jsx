@@ -15,7 +15,8 @@ import img3 from '../../assets/classImages/img3.png';
 import img4 from '../../assets/classImages/img4.png';
 import img5 from '../../assets/classImages/img5.png';
 import img6 from '../../assets/classImages/img6.png';
-
+import MyModal from "../../myModal/Modal";
+import EditClass from "./EditClass";
 function ClassRoom() {
   const authContext = useContext(AuthContext);
   const {
@@ -126,8 +127,29 @@ function ClassRoom() {
       console.log(err);
     }
   }, [allMyClasses, learnerClass]);
+
+  const classroomModaltoggle = () => {
+    if (classModalstate === "flex") {
+      setclassModalstate("none");
+    } else {
+      setclassModalstate("flex");
+    }
+  };
+
+  const createClass = () => {
+    console.log("class created");
+    classroomModaltoggle();
+  };
+  
   return (
     <div className="" style={{ width: '100%' }}>
+       <MyModal
+        modalHeader={"Edit Class"}
+        toggleModal={classroomModaltoggle}
+        modalStatus={classModalstate}
+        component={<EditClass/>}
+        header_bg={""}
+      />
       <div className="back">
         <div className="classes">
           <div className="tutor">
@@ -148,7 +170,13 @@ function ClassRoom() {
               </div>
               <div className="task">
                 <p className="thread">New Thread</p>
-                <BsListTask size={20} style={{cursor:'pointer'}}/>
+                <div className="dropdown">
+                <BsListTask className='dropbtn' size={20} style={{cursor:'pointer'}}/>
+                <div className="dropdown-content">
+                        <div  onClick={() => createClass()} className="createclassText">Edit Profile</div>
+                      </div>
+                </div>
+               
               </div>
             </div>
             <div className="chats">

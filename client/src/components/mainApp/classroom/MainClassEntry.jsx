@@ -132,7 +132,7 @@ export default function MainClassEntry() {
       console.log(err);
     }
   }, [allMyClasses, learnerClass]);
-
+  
   const classroomModaltoggle = () => {
     if (classModalstate === "flex") {
       setclassModalstate("none");
@@ -228,7 +228,10 @@ export default function MainClassEntry() {
                     backgroundSize: "cover",
                   }}
                   key={index}
-                  to="/Classchat"
+                  to={{
+                    pathname:'/Classchat',
+                  }}
+                  
                 >
                   <div className="w-100 h-100">
                     <div
