@@ -3,7 +3,7 @@ import "./mymodal.css";
 
 function MyModal({ modalStatus, component, toggleModal, modalHeader }) {
   return (
-    <div className="mymodal" style={{ display: `${modalStatus}`, zIndex: 2 }}>
+    <div className="mymodal" style={{ display: `${modalStatus}`, zIndex: 3 }}>
       <div className="modalCard">
         <div className="modalHeader d-flex">
           {modalHeader}
