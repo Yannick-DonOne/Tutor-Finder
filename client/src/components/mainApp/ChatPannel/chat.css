@@ -32,17 +32,14 @@
   flex-direction: row;
   align-items: center;
   padding-top: 2em;
-  border-bottom: 1px solid #ccc;
+  /* border-bottom: 1px solid #ccc; */
 }
 .info-header h1 {
-  margin-left: 1em !important;
   color: black;
   text-shadow: none;
   font-weight: bold;
 }
-.fa-bars {
-  display: none;
-}
+
 .bar {
   width: 85px;
   height: 75px;

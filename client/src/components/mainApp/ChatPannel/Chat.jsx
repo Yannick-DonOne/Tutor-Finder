@@ -1,25 +1,25 @@
-import React, { useContext, useState, useEffect, useRef } from 'react';
+import React, { useContext, useState, useEffect, useRef } from "react";
 // import Message from './Message';
-import AuthContext from '../../../context/auth/AuthContext';
-import './chat.css';
-import axios from 'axios';
-import { format } from 'timeago.js';
-import yaya1 from '../../assets/yaya1.jpg';
-import { io } from 'socket.io-client';
-import Chatlist from './Chatlist';
-import Searchbar from './Searchbar';
-import { Button } from 'react-bootstrap';
+import AuthContext from "../../../context/auth/AuthContext";
+import "./chat.css";
+import axios from "axios";
+import { format } from "timeago.js";
+import yaya1 from "../../assets/yaya1.jpg";
+import { io } from "socket.io-client";
+import Chatlist from "./Chatlist";
+import Searchbar from "./Searchbar";
+import { Button } from "react-bootstrap";
 import {
   ArrowLeftSquare,
   ThreeDotsVertical,
   Paperclip,
-} from 'react-bootstrap-icons';
-import { GrSend } from 'react-icons/gr';
-import './chat.css';
-import MsgRcd from './MsgRcd';
+} from "react-bootstrap-icons";
+import { GrSend } from "react-icons/gr";
+import "./chat.css";
+import MsgRcd from "./MsgRcd";
 
 function Chat() {
-  const PF = 'http://localhost:5000/images/';
+  const PF = "http://localhost:5000/images/";
 
   const authContext = useContext(AuthContext);
   const {
@@ -36,7 +36,7 @@ function Chat() {
 
   const [currentChat, setCurrentChat] = useState();
   const [addedMsg, setAddedMsg] = useState();
-  const [conversationId, setconversationId] = useState('');
+  const [conversationId, setconversationId] = useState("");
   const socket = useRef();
   const [tryIt, setTryIt] = useState();
   const [arrivalMessage, setArrivalMessage] = useState(null);
@@ -47,19 +47,19 @@ function Chat() {
     console.log(m);
   };
   const [newMsg, setNewMsg] = useState({
-    text: '',
+    text: "",
   });
-  if (Object(socket).hasOwnProperty('current')) {
+  if (Object(socket).hasOwnProperty("current")) {
     // console.log(socket.current);
-    if (Object(socket.current).hasOwnProperty('id')) {
+    if (Object(socket.current).hasOwnProperty("id")) {
       console.log(socket.current);
     }
   }
   const { text } = newMsg;
   //starts here
   useEffect(() => {
-    socket.current = io('ws://localhost:8900');
-    socket.current.on('getMessage', (data) => {
+    socket.current = io("ws://localhost:8900");
+    socket.current.on("getMessage", (data) => {
       setArrivalMessage({
         sender: data.senderId,
         text: data.text,
@@ -75,11 +75,11 @@ function Chat() {
   }, [arrivalMessage, currentChat]);
 
   useEffect(async () => {
-    if (Object(user).hasOwnProperty('_id')) {
+    if (Object(user).hasOwnProperty("_id")) {
       setnewUser(user._id);
       let userId = user._id;
-      socket.current.emit('addUser', userId);
-      socket.current.on('getUsers', (users) => {
+      socket.current.emit("addUser", userId);
+      socket.current.on("getUsers", (users) => {
         console.log(users);
       });
     }
@@ -96,16 +96,16 @@ function Chat() {
     setNewMsg({ ...newMsg, [e.target.name]: e.target.value });
 
   const clicked = async (conv) => {
-    localStorage.setItem('conv_id', conv._id);
+    localStorage.setItem("conv_id", conv._id);
     setconversationId(conv._id);
     setCurrentChat(conv);
     console.log(currentChat);
   };
 
   useEffect(async () => {
-    let anID = await localStorage.getItem('conv_id');
+    let anID = await localStorage.getItem("conv_id");
     getMsg(anID);
-  }, [anewMsg, localStorage.getItem('conv_id')]);
+  }, [anewMsg, localStorage.getItem("conv_id")]);
 
   useEffect(() => {
     loadUser();
@@ -128,14 +128,14 @@ function Chat() {
     createMessage({ sender: user && user._id, text, conversationId });
     setNewMsg({
       senderId: newUser,
-      text: '',
+      text: "",
     });
 
     const receiverId = currentChat.members.find((member) => member !== newUser);
     console.log(receiverId);
 
-    console.log(newUser + ' from new User');
-    socket.current.emit('sendMessage', {
+    console.log(newUser + " from new User");
+    socket.current.emit("sendMessage", {
       senderId: newUser,
       receiverId,
       text,
@@ -144,17 +144,7 @@ function Chat() {
   return (
     <div className="globe-scope">
       <div className="infochat">
-        <div className="info-header">
-          <ArrowLeftSquare className="arrow" size={36} />
-          <div className="bar">
-            <Button variant="none" style={{ width: '175px', height: '65px' }}>
-              <i
-                className="fas fa-bars"
-                style={{ width: '80px', height: '45px', marginLeft: '2rem' }}
-              ></i>
-            </Button>
-          </div>
-          <div className="topnav" id="myTopnav"></div>
+        <div className="mt-5 info-header">
           <h1>Chat</h1>
         </div>
         <div className="info-person">
@@ -163,11 +153,11 @@ function Chat() {
               <img
                 className="avatar-img"
                 src={
-                  Object(user).hasOwnProperty('profilePic') &&
-                  user.profilePic === ' '
-                    ? 'http://www.iconarchive.com/download/i102645/graphicloads/flat-finance/person.ico'
-                    : Object(user).hasOwnProperty('profilePic') &&
-                      user.profilePic !== '' &&
+                  Object(user).hasOwnProperty("profilePic") &&
+                  user.profilePic === " "
+                    ? "http://www.iconarchive.com/download/i102645/graphicloads/flat-finance/person.ico"
+                    : Object(user).hasOwnProperty("profilePic") &&
+                      user.profilePic !== "" &&
                       PF + user.profilePic
                 }
                 style={{
@@ -183,12 +173,12 @@ function Chat() {
         <div className="chat-list">
           <Searchbar />
           <div className="chatlinks">
-            {typeof myConv === 'object' &&
+            {typeof myConv === "object" &&
               myConv.map((conv) => (
                 <div
                   onClick={() => clicked(conv)}
                   style={{
-                    cursor: 'pointer',
+                    cursor: "pointer",
                   }}
                   key={conv.username}
                 >
@@ -204,7 +194,7 @@ function Chat() {
             <div className="me">
               <div className="list-name">
                 <p className="title">
-                  {typeof currentChat === 'object' &&
+                  {typeof currentChat === "object" &&
                     currentChat.members.map((member) => (
                       <div>
                         {member.username === user.username
@@ -221,11 +211,11 @@ function Chat() {
           </div>
           <div className="chatBody">
             <div className="messages">
-              {typeof currentChat === 'undefined' ? (
+              {typeof currentChat === "undefined" ? (
                 <h1>Open a conversation to start a chat</h1>
               ) : (
                 <div>
-                  {typeof tryIt === 'object' &&
+                  {typeof tryIt === "object" &&
                     tryIt.map((m) => (
                       <div
                         // style={{
@@ -233,7 +223,7 @@ function Chat() {
                         //     m.sender !== user._id ? 'red' : 'blue',
                         // }}
                         className={
-                          m.sender === user._id ? 'message mine' : 'message'
+                          m.sender === user._id ? "message mine" : "message"
                         }
                       >
                         <h2 onClick={() => testing(m)}>hi</h2>
@@ -260,7 +250,7 @@ function Chat() {
                 />
                 <Paperclip size={30} />
                 <button className="send-msg" type="submit">
-                  {' '}
+                  {" "}
                   <GrSend size={30} />
                 </button>
               </form>
