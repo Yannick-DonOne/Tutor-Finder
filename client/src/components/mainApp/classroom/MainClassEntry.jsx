@@ -1,23 +1,25 @@
-import React, { useContext, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import ClassroomHomeHeader from "./classroomComponent/ClassroomHomeHeader";
-import AuthContext from "../../../context/auth/AuthContext";
-import CreateClassroom from "./CreateClassroom";
-import "./myclassroom.css";
+import React, { useContext, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import ClassroomHomeHeader from './classroomComponent/ClassroomHomeHeader';
+import AuthContext from '../../../context/auth/AuthContext';
+import CreateClassroom from './CreateClassroom';
+import './myclassroom.css';
 
-import imgtry from "../../assets/img/1.jpg";
-import img1 from "../../assets/classImages/img1.png";
-import img2 from "../../assets/classImages/img2.png";
-import img3 from "../../assets/classImages/img3.png";
-import img4 from "../../assets/classImages/img4.png";
-import img5 from "../../assets/classImages/img5.png";
-import img6 from "../../assets/classImages/img6.png";
-import MyModal from "../../myModal/Modal";
-import ClassDetails from "./ClassDetails";
+import imgtry from '../../assets/img/1.jpg';
+import img1 from '../../assets/classImages/img1.png';
+import img2 from '../../assets/classImages/img2.png';
+import img3 from '../../assets/classImages/img3.png';
+import img4 from '../../assets/classImages/img4.png';
+import img5 from '../../assets/classImages/img5.png';
+import img6 from '../../assets/classImages/img6.png';
+import MyModal from '../../myModal/Modal';
+import ClassDetails from './ClassDetails';
 
 const classPics = [img1, img2, img3, img4, img5, img6];
 let searchState;
 export default function MainClassEntry() {
+  const PF = 'http://localhost:5000/images/';
+
   const authContext = useContext(AuthContext);
   const {
     isAdd,
@@ -40,12 +42,12 @@ export default function MainClassEntry() {
   const [alreadySet, setalreadySet] = useState(0);
   const [firstSearch, setfirstSearch] = useState(0);
   const [loggedUser, setloggedUser] = useState(undefined);
-  const [handleModal, sethandleModal] = useState("none");
+  const [handleModal, sethandleModal] = useState('none');
   const [modalData, setmodalData] = useState({});
-  const [searchText, setsearchText] = useState("");
+  const [searchText, setsearchText] = useState('');
   const [myClassesTemp, setmyClassesTemp] = useState();
 
-  const [classModalstate, setclassModalstate] = useState("none");
+  const [classModalstate, setclassModalstate] = useState('none');
 
   useEffect(async () => {
     loadUser();
@@ -65,7 +67,6 @@ export default function MainClassEntry() {
     if (myClasses.length > 0) {
       setalreadySet(1);
     }
-    console.log("I was changed");
   }, [myClasses]);
 
   useEffect(async () => {
@@ -93,10 +94,10 @@ export default function MainClassEntry() {
           await setALearnersClass(learnerClass);
         });
       } else {
-        console.log("no from learner class");
+        console.log('no from learner class');
       }
     } catch (err) {
-      console.error(err + "error from MainclassEntry");
+      console.error(err + 'error from MainclassEntry');
     }
   }, [learnerClass]);
 
@@ -106,7 +107,7 @@ export default function MainClassEntry() {
 
       if (alreadySet === 0) {
         if (
-          Object(allMyClasses).hasOwnProperty("classroom") &&
+          Object(allMyClasses).hasOwnProperty('classroom') &&
           Array.isArray(learnerClass)
         ) {
           new Promise(async (resolve, reject) => {
@@ -116,16 +117,15 @@ export default function MainClassEntry() {
               (singleClass) =>
                 (singleClass.bg = classPics[Math.floor(Math.random() * 7)])
             );
-
             resolve(temp);
           })
             .then(async (newClasses) => {
               await setMyClasses(newClasses);
-              return newClasses;
+              return await newClasses;
             })
             .then((e) => setmyClassesTemp(e));
         } else {
-          console.log("no");
+          console.log('no');
         }
       }
     } catch (err) {
@@ -134,34 +134,34 @@ export default function MainClassEntry() {
   }, [allMyClasses, learnerClass]);
   
   const classroomModaltoggle = () => {
-    if (classModalstate === "flex") {
-      setclassModalstate("none");
+    if (classModalstate === 'flex') {
+      setclassModalstate('none');
     } else {
-      setclassModalstate("flex");
+      setclassModalstate('flex');
     }
   };
 
   const createClass = () => {
-    console.log("class created");
+    console.log('class created');
     classroomModaltoggle();
   };
 
-  const toggleModal = (e = "null", index = "null", from = "null") => {
+  const toggleModal = (e = 'null', index = 'null', from = 'null') => {
     e.preventDefault();
-
-    if (handleModal === "flex") {
-      sethandleModal("none");
+    // console.log(e);
+    if (handleModal === 'flex') {
+      sethandleModal('none');
     } else {
-      if (index !== "null") {
+      if (index !== 'null') {
         new Promise((resolve, reject) => {
           let arrayFrom =
-            from == "learner" ? learnerClass : from == "tutor" && myClasses;
+            from == 'learner' ? learnerClass : from == 'tutor' && myClasses;
           resolve(arrayFrom[index]);
         })
           .then(async (data) => await setmodalData(data))
-          .then(() => sethandleModal("flex"));
+          .then(() => sethandleModal('flex'));
       } else {
-        sethandleModal("flex");
+        sethandleModal('flex');
       }
     }
   };
@@ -189,22 +189,26 @@ export default function MainClassEntry() {
   //   }
   // };
 
+  const alice = (data) => {
+    console.log(data);
+  };
+
   return (
     <div
       className="p-4"
-      style={{ width: "100%", height: "100vh", overflowY: "auto" }}
+      style={{ width: '100%', height: '100vh', overflowY: 'auto' }}
     >
       <MyModal
-        modalHeader={"Create new class"}
+        modalHeader={'Create new class'}
         toggleModal={classroomModaltoggle}
         modalStatus={classModalstate}
         component={<CreateClassroom />}
-        header_bg={""}
+        header_bg={''}
       />
       <MyModal
         component={<ClassDetails data={modalData} />}
         modalStatus={handleModal}
-        modalHeader={"Class detail"}
+        modalHeader={'Class detail'}
         toggleModal={toggleModal}
       />
       <ClassroomHomeHeader
@@ -212,20 +216,20 @@ export default function MainClassEntry() {
         search={search}
         createClass={createClass}
         showCreateClassroom={
-          Object(loggedUser).hasOwnProperty("status") && loggedUser.status
+          Object(loggedUser).hasOwnProperty('status') && loggedUser.status
         }
         toggleModal={toggleModal}
       />
-      <div className="w-100 d-flex mt-5" style={{ flexWrap: "wrap" }}>
-        {Object(loggedUser).hasOwnProperty("status") &&
-        loggedUser.status === "tutor"
+      <div className="w-100 d-flex mt-5" style={{ flexWrap: 'wrap' }}>
+        {Object(loggedUser).hasOwnProperty('status') &&
+        loggedUser.status === 'tutor'
           ? myClasses.map((e, index) => {
               return (
                 <Link
                   className="classroomCard text-white rounded m-3"
                   style={{
                     backgroundImage: `url("${e.bg}")`,
-                    backgroundSize: "cover",
+                    backgroundSize: 'cover',
                   }}
                   key={index}
                   to={{
@@ -237,31 +241,34 @@ export default function MainClassEntry() {
                     <div
                       className="rounded px-4 pt-4"
                       style={{
-                        backgroundColor: "rgba(0,0,0,0.5)",
-                        width: "100%",
-                        height: "100%",
-                        position: "relative",
+                        backgroundColor: 'rgba(0,0,0,0.5)',
+                        width: '100%',
+                        height: '100%',
+                        position: 'relative',
                       }}
                     >
                       <div className="w-100 d-flex position-relative">
                         <div
                           className="pr-2"
-                          style={{ width: "90%", textOverflow: "wrap" }}
+                          style={{ width: '90%', textOverflow: 'wrap' }}
                         >
-                          <p className="h2 font-weight-bold">
+                          <p
+                            className="h2 font-weight-bold"
+                            onClick={() => alice(e)}
+                          >
                             Course ID: {e.classCode}
                           </p>
                         </div>
 
                         <div
                           className="bg-dark"
-                          onClick={(e) => toggleModal(e, index, "tutor")}
+                          onClick={(e) => toggleModal(e, index, 'tutor')}
                         >
                           <i
                             style={{
-                              position: "absolute",
+                              position: 'absolute',
                               right: 0,
-                              top: ".5rem",
+                              top: '.5rem',
                             }}
                             class="far fa-eye eyIcon"
                           ></i>
@@ -273,7 +280,7 @@ export default function MainClassEntry() {
                       </p>
 
                       <div
-                        style={{ position: "absolute", bottom: "1rem" }}
+                        style={{ position: 'absolute', bottom: '1rem' }}
                         className="d-flex align-items-end"
                       >
                         <div
@@ -282,7 +289,11 @@ export default function MainClassEntry() {
                         >
                           <img
                             className="rounded-circle"
-                            src={imgtry}
+                            src={
+                              e.tutor_id.profilePic == ''
+                                ? 'http://www.iconarchive.com/download/i102645/graphicloads/flat-finance/person.ico'
+                                : PF + e.tutor_id.profilePic
+                            }
                             width="50"
                             height="50"
                             alt=""
@@ -297,15 +308,15 @@ export default function MainClassEntry() {
                 </Link>
               );
             })
-          : Object(loggedUser).hasOwnProperty("status") &&
-            loggedUser.status === "learner" &&
+          : Object(loggedUser).hasOwnProperty('status') &&
+            loggedUser.status === 'learner' &&
             learnerClass.map((e, index) => {
               return (
                 <Link
                   className="classroomCard text-white rounded m-3"
                   style={{
                     backgroundImage: `url("${e.bg}")`,
-                    backgroundSize: "cover",
+                    backgroundSize: 'cover',
                   }}
                   key={index}
                   to="/Classchat"
@@ -314,16 +325,16 @@ export default function MainClassEntry() {
                     <div
                       className="rounded px-4 pt-4"
                       style={{
-                        backgroundColor: "rgba(0,0,0,0.5)",
-                        width: "100%",
-                        height: "100%",
-                        position: "relative",
+                        backgroundColor: 'rgba(0,0,0,0.5)',
+                        width: '100%',
+                        height: '100%',
+                        position: 'relative',
                       }}
                     >
                       <div className="w-100 d-flex position-relative">
                         <div
                           className="pr-2"
-                          style={{ width: "90%", textOverflow: "wrap" }}
+                          style={{ width: '90%', textOverflow: 'wrap' }}
                         >
                           <p className="h2 font-weight-bold">
                             Course ID: {e.classCode}
@@ -332,13 +343,13 @@ export default function MainClassEntry() {
 
                         <div
                           className="bg-dark"
-                          onClick={(e) => toggleModal(e, index, "learner")}
+                          onClick={(e) => toggleModal(e, index, 'learner')}
                         >
                           <i
                             style={{
-                              position: "absolute",
+                              position: 'absolute',
                               right: 0,
-                              top: ".5rem",
+                              top: '.5rem',
                             }}
                             class="far fa-eye eyIcon"
                           ></i>
@@ -350,7 +361,7 @@ export default function MainClassEntry() {
                       </p>
 
                       <div
-                        style={{ position: "absolute", bottom: "1rem" }}
+                        style={{ position: 'absolute', bottom: '1rem' }}
                         className="d-flex align-items-end"
                       >
                         <div

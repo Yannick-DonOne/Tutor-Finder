@@ -109,6 +109,7 @@ route.get('/viewAllMyCreatedClasses', Auth, async (req, res) => {
       let classroom = await Classroom.find({})
         .where('tutor_id')
         .populate('participants')
+        .populate('tutor_id')
 
         .equals(req.user.id);
       res.json({ classroom });
@@ -176,7 +177,9 @@ route.get('/learners/classes/:learnerID', Auth, async (req, res) => {
   try {
     const allLearnersClasses = await Classroom.find({
       participants: { $in: [req.params.learnerID] },
-    }).populate('participants');
+    })
+      .populate('participants')
+      .populate('tutor_id');
     res.json(allLearnersClasses);
   } catch (err) {
     res.status(500).json({ msg: 'Server Error' });

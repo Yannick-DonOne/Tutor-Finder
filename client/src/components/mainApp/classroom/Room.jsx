@@ -21,9 +21,12 @@ function Room({ room, e }) {
   const chatting = async () => {
     try {
       let ID = await e._id;
+
       getClassMsg(ID);
       // console.log('from component ' + ID);
       localStorage.setItem('CLASSID', ID);
+      localStorage.setItem('CLASSNAME', e.className);
+      localStorage.setItem('TUTORNAME', e.tutorName);
     } catch (error) {
       console.log(error);
     }

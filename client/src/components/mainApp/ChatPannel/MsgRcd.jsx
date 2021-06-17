@@ -1,5 +1,5 @@
-import React from "react";
-import "./chat.css";
+import React from 'react';
+import './chat.css';
 function MsgRcd({ m }) {
   console.log(m);
   return (
